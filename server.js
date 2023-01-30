@@ -5,6 +5,8 @@ const cors = require('cors') //import cors
 const morgan = require('morgan') //import morgan
 const { PORT } = process.env //get the port from environment variable
 
+const userController = require('./controllers/user-controller')
+
 
 // parse incoming request bodies in a middleware before handlers
 app.use(express.json())
@@ -12,6 +14,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(cors()) //use cors
 app.use(morgan('dev')) //use morgan in dev mode
 
+app.use('/user', userController)
 
 
 // redirect to user route
